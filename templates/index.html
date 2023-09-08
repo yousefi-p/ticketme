@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ name }} Page
+{% endblock %}
+
+
+{% block navbar %}
+    <nav class="border navbar navbar-expand-md navbar-dark sticky-top nav-color">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img src="/static/helpdesk-icon.png" width="50" height="50"><span class="red">Ticket ME!</span></a>
+                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav ms-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                        </ul>
+                </div>
+            </div>
+
+        </nav>
+{% endblock %}
+
+
+{% block main %}
+    <div class="row">
+        <div class="col-lg-1">
+            <a href="/add-ticket" class="" >
+                <img src="/static/add-icon.png" width="42" height="42" />
+            </a>
+        </div>
+    </div>
+    <div class="row ms-auto tickets">
+        <div class="">
+            <h2>Tickets</h2>
+            <div class="table table-hover">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>User</th>
+                            <th>Status</th>
+                            <th>Created at</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ticket in tickets %}
+                            <tr>
+                                <td>{{ ticket['id'] | title}}</td>
+                                <td>{{ ticket['title'] | title}}</td>
+                                <td>{{ ticket['user_id'] | title }}</td>
+                                <td style="background-color: {{ ticket['color'] }}" >{{ ticket['name'] }}</td>
+                                <td>{{ ticket['created_at'] }}</td>
+                                <td><a href="/ticket-detail/{{ ticket['id'] }}" class="btn btn-success">Detail</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

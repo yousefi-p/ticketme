@@ -1,0 +1,47 @@
+{% extends "admin-navbar.html" %}
+
+{% block title %}
+    Add status Page
+{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-md-6">
+        <form action="/add-status" method="post">
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-50" id="name" name="name" placeholder="Status Name" type="text" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="color" class="form-label mx-auto">Color picker</label>
+                <input type="color" class="form-control form-control-color mx-auto" id="color" name="color" value="" title="Choose a color">
+            </div>
+            <button class="btn btn-primary" type="submit">Create</button>
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <h2>Statuses</h2>
+        <div class="table-responsive-md">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Color Name</th>
+                        <th>Color Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for status in statuses %}
+                        <tr>
+                            <td style="background-color:{{ status['color'] }}">{{ status['name'] | title}}</td>
+                            <td>{{ status['color'] | title }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

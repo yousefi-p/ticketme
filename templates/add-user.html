@@ -1,0 +1,62 @@
+{% extends "admin-navbar.html" %}
+
+{% block title %}
+    Add User Page
+{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-md-6">
+        <form action="/add-user" method="post">
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-50" id="firstname" name="firstname" placeholder="First Name" type="text" required>
+            </div>
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-50" id="lastname" name="lastname" placeholder="Last Name" type="text" required>
+            </div>
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-50" id="username" name="username" placeholder="Username" type="text" required>
+            </div>
+            <div class="mb-3">
+                <input class="form-control mx-auto w-50" id="password" name="password" placeholder="Password" type="password" required>
+            </div>
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-50" id="email" name="email" placeholder="E-mail" type="text" required>
+            </div>
+            <div class="mb-3">
+                <select class="form-select mx-auto w-50" name="role_select">
+                    {% for role in roles %}
+                    <option value="{{ role['id'] }}">{{ role['name'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Create</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="table-responsive-md">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user["first_name"] | title }}  {{ user["last_name"] | title }}</td>
+                        <td>{{ user["username"] }}</td>
+                        <td>{{ user["role_id"] }}</td>
+                        <td><a href=""><button class="btn btn-warning" type="button">Detail</button></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

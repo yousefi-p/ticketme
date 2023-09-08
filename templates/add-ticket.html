@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Ticket for {{ name | title }} Page
+{% endblock %}
+
+{% block main %}
+<div class="col-md-6">
+    <form action="/add-ticket" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-75" id="title" name="title" placeholder="Title" type="text" required>
+        </div>
+        <div class="mb-3">
+            <textarea autocomplete="off" autofocus class="form-control mx-auto w-75" row="5" id="content" name="content" placeholder="Your problem..." required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Create</button>
+    </form>
+</div>
+{% endblock %}

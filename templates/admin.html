@@ -1,0 +1,39 @@
+{% extends "admin-navbar.html" %}
+
+
+
+
+{% block main %}
+        <div class="row">
+            <div class="col">
+                <div class="container">
+                    <h2>Tickets</h2>
+                    <div class="table-responsive-md">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>User</th>
+                                    <th>Status</th>
+                                    <th>Created at</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ticket in tickets %}
+                                    <tr>
+                                        <td>{{ ticket['title'] | title}}</td>
+                                        <td>{{ ticket['user'] | title }}</td>
+                                        <td>{{ ticket['status'] }}</td>
+                                        <td>{{ ticket['created_at'] }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+{% endblock %}

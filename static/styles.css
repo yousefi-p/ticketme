@@ -1,0 +1,14 @@
+.nav-color{
+    background-color: rgb(89, 148, 105) ;
+}
+
+.footer-color{
+    background-color: rgb(121, 140, 126);
+    color: azure;
+}
+
+.tickets th{
+    width: 100px;
+    text-align: center;
+
+}
